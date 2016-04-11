@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAcopioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAcopioLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{acopioController.selected.id}" title="#{bundle.EditAcopioTitle_id}" required="true" requiredMessage="#{bundle.EditAcopioRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditAcopioLabel_nombre}" for="nombre" />
+                    <h:inputText id="nombre" value="#{acopioController.selected.nombre}" title="#{bundle.EditAcopioTitle_nombre}" required="true" requiredMessage="#{bundle.EditAcopioRequiredMessage_nombre}"/>
+                    <h:outputLabel value="#{bundle.EditAcopioLabel_identificador}" for="identificador" />
+                    <h:inputText id="identificador" value="#{acopioController.selected.identificador}" title="#{bundle.EditAcopioTitle_identificador}" required="true" requiredMessage="#{bundle.EditAcopioRequiredMessage_identificador}"/>
+                    <h:outputLabel value="#{bundle.EditAcopioLabel_capacidad}" for="capacidad" />
+                    <h:inputText id="capacidad" value="#{acopioController.selected.capacidad}" title="#{bundle.EditAcopioTitle_capacidad}" required="true" requiredMessage="#{bundle.EditAcopioRequiredMessage_capacidad}"/>
+                    <h:outputLabel value="#{bundle.EditAcopioLabel_stock}" for="stock" />
+                    <h:inputText id="stock" value="#{acopioController.selected.stock}" title="#{bundle.EditAcopioTitle_stock}" required="true" requiredMessage="#{bundle.EditAcopioRequiredMessage_stock}"/>
+                    <h:outputLabel value="#{bundle.EditAcopioLabel_estado}" for="estado" />
+                    <h:inputText id="estado" value="#{acopioController.selected.estado}" title="#{bundle.EditAcopioTitle_estado}" required="true" requiredMessage="#{bundle.EditAcopioRequiredMessage_estado}"/>
+                </h:panelGrid>
+                <h:commandLink action="#{acopioController.update}" value="#{bundle.EditAcopioSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAcopioViewLink}"/>
+                <br />
+                <h:commandLink action="#{acopioController.prepareList}" value="#{bundle.EditAcopioShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAcopioIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,14 +1,69 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Facelet Title</title>
+        <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
-        <br />
-        <h:link outcome="welcomePrimefaces" value="Primefaces welcome page" />
+        <p:layout fullPage="true">
+            <h:form>
+                <p:layoutUnit position="north">
+                    <h:panelGrid columns="3">
+                        <p:outputLabel value="Nombre" for="nombre" />
+                        <h:inputText id="nombre" value="#{beanAcopio.nombre}" title="Nombre" />
+                        <p:message for="nombre"/>                    
+                        <p:outputLabel value="Identificador" for="identificador" />
+                        <h:inputText id="identificador" value="#{beanAcopio.identificador}" title="Identificador" />
+                        <p:message for="identificador"/>                    
+                        <p:outputLabel value="Capacidad" for="capacidad" />
+                        <h:inputText id="capacidad" value="#{beanAcopio.capacidad}" title="Precio" />
+                        <p:message for="capacidad"/>   
+                        <p:outputLabel value="Stock" for="stock" />
+                        <h:inputText id="stock" value="#{beanAcopio.stock}" title="Stock" />
+                        <p:message for="stock"/>
+                    </h:panelGrid>
+                </p:layoutUnit>
+                <p:layoutUnit position="center">
+                    <h:panelGrid>
+                        <h:form>
+                            <p:dataTable var="pro" value="#{beanAcopio.acopios}">
+                                <p:column headerText="Nombre">
+                                    <h:outputText value="#{pro.nombre}" title="Nombre" />
+                                </p:column> 
+                                <p:column headerText="Identificador">
+                                    <h:outputText value="#{pro.identificador}" title="Identificador" />
+                                </p:column>
+
+                                <p:column headerText="Capacidad">
+                                    <h:outputText value="#{pro.capacidad}" title="Precio" />
+                                </p:column>
+
+                                <p:column headerText="Stock">
+                                    <h:outputText value="#{pro.stock}" title="Stock" />
+                                </p:column>
+                                <p:column headerText="Change">
+                                    <h:commandButton  value="Change" action="#{beanAcopio.Edit(pro.id)}"/>
+                                </p:column>
+                                <p:column headerText="Delete">
+                                    <h:commandButton  value="Delete" action="#{beanAcopio.Delete(pro.id)}"/>
+                                </p:column>
+                            </p:dataTable>
+                        </h:form>
+                    </h:panelGrid>
+                </p:layoutUnit>
+                <p:layoutUnit position="south" size="50" closable="true" collapsible="true">
+                    <h:panelGrid columns="2">
+                        <p:outputLabel value="Id" for="id" />
+                        <p:outputLabel id="id" value="#{beanAcopio.id}" title="Id"  />
+                        <h:commandButton id="registroCommand" value="Save" action="#{beanAcopio.Save()}"/>                        
+                        <h:commandButton id="saveEdition" value="Edit" action="#{beanAcopio.SaveEdition(beanAcopio, beanAcopio.id)}"/>
+                    </h:panelGrid>
+                </p:layoutUnit>
+            </h:form>
+        </p:layout>
     </h:body>
 </html>
 

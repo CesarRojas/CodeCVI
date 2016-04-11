@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAcopioTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAcopioLabel_id}"/>
+                    <h:outputText value="#{acopioController.selected.id}" title="#{bundle.ViewAcopioTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAcopioLabel_nombre}"/>
+                    <h:outputText value="#{acopioController.selected.nombre}" title="#{bundle.ViewAcopioTitle_nombre}"/>
+                    <h:outputText value="#{bundle.ViewAcopioLabel_identificador}"/>
+                    <h:outputText value="#{acopioController.selected.identificador}" title="#{bundle.ViewAcopioTitle_identificador}"/>
+                    <h:outputText value="#{bundle.ViewAcopioLabel_capacidad}"/>
+                    <h:outputText value="#{acopioController.selected.capacidad}" title="#{bundle.ViewAcopioTitle_capacidad}"/>
+                    <h:outputText value="#{bundle.ViewAcopioLabel_stock}"/>
+                    <h:outputText value="#{acopioController.selected.stock}" title="#{bundle.ViewAcopioTitle_stock}"/>
+                    <h:outputText value="#{bundle.ViewAcopioLabel_estado}"/>
+                    <h:outputText value="#{acopioController.selected.estado}" title="#{bundle.ViewAcopioTitle_estado}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{acopioController.destroyAndView}" value="#{bundle.ViewAcopioDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAcopioEditLink}"/>
+                <br />
+                <h:commandLink action="#{acopioController.prepareCreate}" value="#{bundle.ViewAcopioCreateLink}" />
+                <br />
+                <h:commandLink action="#{acopioController.prepareList}" value="#{bundle.ViewAcopioShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAcopioIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
